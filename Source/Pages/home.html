@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../theme.css">
+  
+</head>
+<body>
+  <nav class="border-b p-6 mb-12 border-black ">
+    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg font-semibold hidden">
+      <li><a href="#" class="text-[#5e4a31] hover:text-[#d08c5f] font-bold">Home</a></li>
+      <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
+      <li><a href="Transaction.html" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
+      <li><a href="future-expense." class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
+    </ul>
+    <div class="absolute right-8 top-6">
+      <!-- Hamburger menu for mobile -->
+      <div class="md:hidden flex items-center -mt-3">
+        <button id="navToggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Profile dropdown (unchanged) -->
+      <div class="relative group hidden md:block mr-16 -m-2 ">
+        <button id="profileBtn" type="button" class="flex items-center focus:outline-none">
+          <img src="../images/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-[#BF9A69]">
+          <svg class="ml-2 w-4 h-4 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="profileDropdown" class="hidden absolute right-2 top-12 w-32 bg-white border rounded shadow z-50">
+          <a href="profile.html" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">Profile</a>
+          <a href="../../index.html" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">Sign out</a>
+          
+        </div>
+      </div>
+
+      <!-- Mobile nav menu -->
+      <div id="mobileNav" class="fixed inset-0 bg-black bg-opacity-40 z-50 hidden md:hidden">
+        <div class="bg-white w-64 h-full shadow-lg p-6 ">
+          <button id="closeNav" class="mb-6 focus:outline-none">
+            <svg class="w-6 h-6 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+          <ul class="space-y-4 text-base font-semibold">
+            <li>
+              <div class="flex gap-2">
+                 <a href="./profile.html">
+                  <img src="../images/avatar.jpg" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-[#BF9A69]">
+                 </a>
+                 <div>
+                  <p" class="text-black font-bold text-xs ">Rigby the Cat</p>
+                  <a href="/index.html" class="text-[#BF9A69] hover:text-[#d08c5f] font-medium text-[10px] -mt-2">Sign-out</a>
+                 </div>
+              </div>
+              
+            </li>
+            <li><a href="#" class="text-[#BF9A69] hover:text-[#d08c5f] font-bold">Home</a></li>
+            <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
+            <li><a href="#" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
+            <li><a href="#" class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
+          </ul>
+        </div>
+      </div>
+      <script>
+        // Hamburger menu logic
+        document.addEventListener('DOMContentLoaded', function () {
+          const navToggle = document.getElementById('navToggle');
+          const mobileNav = document.getElementById('mobileNav');
+          const closeNav = document.getElementById('closeNav');
+          navToggle && navToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            mobileNav.classList.remove('hidden');
+          });
+          closeNav && closeNav.addEventListener('click', function () {
+            mobileNav.classList.add('hidden');
+          });
+          mobileNav && mobileNav.addEventListener('click', function (e) {
+            if (e.target === mobileNav) mobileNav.classList.add('hidden');
+          });
+        });
+      </script>
+    </div>
+  </nav>
+
+  <div class=" md:flex justify w-10/12 mx-auto">
+    <!-- Left Panel -->
+    <div class="md:w-1/2 pr-10">
+      <div class="flex justify-between items-center mb-2">
+      <p class="bg-[#BF9A69] text-white px-4 py-2 rounded-xl mb-2 text-sm font-semibold">ASSETS</p>
+      </div>
+      <h1 class="text-5xl font-bold">₱<span id="totalAssets">0.00</span></h1>
+      <p class="text-sm text-gray-500 mb-4">Spend your funds wisely!</p>
+
+      <div class="">
+        <div class="flex justify-between items-center mb-2">
+        <p class="bg-[#BF9A69] text-white text-sm font-semibold px-4 py-2 rounded mb-1 flex">Accounts</p>
+        </div>
+        <ul id="accountList" class="mb-4 space-y-1 "></ul>
+      </div>
+      <div>
+        <div class="flex justify-between items-center mb-2">
+        <p class="bg-[#BF9A69] text-white text-sm font-semibold px-4 py-2 rounded mb-1">Credit Cards</p>
+        </div>
+        <ul id="creditList" class="space-y-1"></ul>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="md:w-1/2 my-12 md:mt-0">
+      <div class="flex justify-between items-center mb-3">
+      <p class="bg-[#BF9A69] text-white px-4 py-1 rounded-xl mb-4  text-base font-semibold">Transactions</p>
+      <div class="relative">
+        <button onclick="showNewOptions()" class="border px-3 py-2 rounded-full text-sm -mt-3">New +</button>
+        <div id="newOptions" class="hidden absolute right-0  bg-white border rounded shadow p-2">
+        <button onclick="openAddForm()" class="block w-full text-nowrap px-2 py-1 hover:bg-gray-100 text-sm">Add Balance</button>
+        <button onclick="openTransForm()" class="block w-full text-left px-2 py-1 hover:bg-gray-100 text-sm">Transaction</button>
+        </div>
+      </div>
+      </div>
+
+      <div id="transactionHistory" class="space-y-4 max-h-[500px] overflow-y-auto pr-1 no-scrollbar"></div>
+    </div>
+  </div>
+
+  <!-- Add Balance Popup -->
+  <div id="addPopup" class="fixed inset-0 hidden flex items-center justify-center popup-bg">
+    <div class="bg-white p-6 rounded shadow w-96">
+      <h2 class="font-semibold mb-2">Add Balance</h2>
+      <input id="addName" class="border w-full px-2 py-1 mb-2" placeholder="Name">
+      <input id="addAmount" class="border w-full px-2 py-1 mb-2" type="number" placeholder="Amount">
+      <div class="flex space-x-2 mb-4">
+      <input id="addDate" class="border w-1/2 px-2 py-1 mb-2" type="date">
+      <select id="addCategory" class="border w-1/2 px-2 py-1 mb-2">>
+        <option value="account">Account</option>
+        <option value="credit">Credit Card</option>
+      </select>
+      </div>
+      <div class="flex justify-end space-x-2">
+        <button onclick="document.getElementById('addPopup').classList.add('hidden')" class="px-3 py-1">Cancel</button>
+        <button onclick="addFund()" class="bg-[#d08c5f] text-white px-3 py-1 rounded">Add</button>
+      </div>
+    </div>
+  </div>
+
+ <!-- Transaction Popup -->
+<div id="transPopup" class="fixed inset-0 hidden flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="bg-white p-6 rounded shadow w-96">
+    <p class="font-semibold mb-2 text-sm ">New Transaction</p>
+      <input id="transName" class="border w-full px-2 py-1 mb-2" placeholder="Transaction Name">
+     <input id="transMerchant" class="border w-full px-2 py-1 mb-2" placeholder="Merchant Name">
+     <input id="transAmount" class="border w-full px-2 py-1 mb-2" type="number" placeholder="₱0.00">
+    <div class="flex space-x-2 mb-4">
+      <select id="transFrom" class="border w-1/2 px-2 py-1 mb-2"></select>
+    <input id="transDate" class="border w-1/2 px-2 py-1 mb-2" type="date">
+    </div>
+
+    <div class="flex justify-end space-x-2">
+      <button onclick="document.getElementById('transPopup').classList.add('hidden')" class="px-3 py-1">Cancel</button>
+      <button onclick="createTransaction()" class="bg-[#d08c5f] text-white px-3 py-1 rounded">Add</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Dropdown logic for profile menu
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('profileBtn');
+    const dropdown = document.getElementById('profileDropdown');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      dropdown.classList.toggle('hidden');
+    });
+    document.addEventListener('click', function (e) {
+      if (!dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+      }
+    });
+    dropdown.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+  });
+
+  let accounts = {};
+  let creditCards = {};
+  let transactions = [];
+  let fundHistory = [];
+
+  function showNewOptions() {
+    const menu = document.getElementById('newOptions');
+    menu.classList.toggle('hidden');
+  }
+
+  function openAddForm() {
+    document.getElementById('addPopup').classList.remove('hidden');
+    document.getElementById('newOptions').classList.add('hidden');
+  }
+
+  function openTransForm() {
+    document.getElementById('transPopup').classList.remove('hidden');
+    document.getElementById('newOptions').classList.add('hidden');
+  }
+
+  function loadFromStorage() {
+    accounts = JSON.parse(localStorage.getItem('accounts') || '{}');
+    creditCards = JSON.parse(localStorage.getItem('creditCards') || '{}');
+    transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+    fundHistory = JSON.parse(localStorage.getItem('fundHistory') || '[]');
+  }
+
+  function saveToStorage() {
+    localStorage.setItem('accounts', JSON.stringify(accounts));
+    localStorage.setItem('creditCards', JSON.stringify(creditCards));
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+    localStorage.setItem('fundHistory', JSON.stringify(fundHistory));
+  }
+
+  function updateDisplay() {
+    const accList = document.getElementById("accountList");
+    const credList = document.getElementById("creditList");
+    const transFrom = document.getElementById("transFrom");
+    const historyList = document.getElementById("transactionHistory");
+    const totalAssetsEl = document.getElementById("totalAssets");
+
+    accList.innerHTML = "";
+    credList.innerHTML = "";
+    transFrom.innerHTML = "";
+    historyList.innerHTML = "";
+
+    let totalAssets = 0;
+
+    for (let name in accounts) {
+      accList.innerHTML += `<li class="flex items-center gap-2"><img src="https://cdn-icons-png.flaticon.com/512/1052/1052854.png" class="w-6"> <span>${name}</span> <span class="ml-auto">₱${accounts[name].toLocaleString()}</span></li>`;
+      transFrom.innerHTML += `<option value="account:${name}">${name} (Account)</option>`;
+      totalAssets += accounts[name];
+    }
+
+    for (let name in creditCards) {
+      credList.innerHTML += `<li class="flex items-center gap-2"><img src="https://cdn-icons-png.flaticon.com/512/6008/6008154.png" class="w-6"> <span>${name}</span> <span class="ml-auto">₱${creditCards[name].toLocaleString()}</span></li>`;
+      transFrom.innerHTML += `<option value="credit:${name}">${name} (Credit)</option>`;
+      totalAssets += creditCards[name];
+    }
+
+    totalAssetsEl.textContent = totalAssets.toLocaleString();
+
+    const allHistory = [
+  ...fundHistory.map(f => ({ type: 'fund', ...f })),
+  ...transactions.map(t => ({ type: 'transaction', ...t }))
+];
+
+// Group by formatted date (yyyy-mm-dd)
+const groupedByDate = {};
+
+allHistory.forEach(entry => {
+  const dateKey = new Date(entry.date).toISOString().split('T')[0]; // e.g. "2025-05-25"
+  if (!groupedByDate[dateKey]) groupedByDate[dateKey] = [];
+  groupedByDate[dateKey].push(entry);
+},
+);
+
+// Sort dates descending
+const sortedDates = Object.keys(groupedByDate).sort((a, b) => new Date(b) - new Date(a));
+
+sortedDates.forEach(date => {
+  historyList.innerHTML += `<p class="text-xs text-gray-400 mt-1 text-center">${date}</p>`;
+
+  groupedByDate[date].forEach(entry => {
+    if (entry.type === 'transaction') {
+      historyList.innerHTML += `
+        <div class="border px-4 py-2 rounded justify-between">
+          <div class="flex justify-between items-center mb-1">
+            <p class="font-semibold">${entry.name}</p>
+            <p class="text-red-700 font-bold text-sm">₱${entry.amount.toLocaleString()}</p>
+          </div>
+          <p class="text-sm text-gray-500">${entry.merchant}</p>
+        </div>`;
+    } else if (entry.type === 'fund') {
+      historyList.innerHTML += `
+        <div class="border px-4 py-2 rounded justify-between">
+          <div class="flex justify-between items-center mb-1">
+            <p class="font-semibold">${entry.name} (${entry.category})</p>
+            <p class="text-green-700 font-bold text-sm">₱${entry.amount.toLocaleString()}</p>
+          </div>
+        </div>`;
+    }
+  });
+});
+
+  }
+
+  function addFund() {
+    const name = document.getElementById("addName").value.trim();
+    const amount = parseFloat(document.getElementById("addAmount").value);
+    const category = document.getElementById("addCategory").value;
+    const date = document.getElementById("addDate").value;
+
+    if (!name || isNaN(amount) || !date) return alert("Fill out the form completely");
+
+    if (category === "account") {
+      accounts[name] = (accounts[name] || 0) + amount;
+    } else {
+      creditCards[name] = (creditCards[name] || 0) + amount;
+    }
+
+    fundHistory.push({ name, amount, category, date });
+
+    document.getElementById("addPopup").classList.add("hidden");
+    saveToStorage();
+    updateDisplay();
+  }
+
+  function createTransaction() {
+    const name = document.getElementById("transName").value.trim();
+    const merchant = document.getElementById("transMerchant").value.trim();
+    const amount = parseFloat(document.getElementById("transAmount").value);
+    const from = document.getElementById("transFrom").value;
+    const date = document.getElementById("transDate").value;
+
+    if (!name || !merchant || isNaN(amount) || !from || !date) return alert("Fill all fields");
+
+    const [type, sourceName] = from.split(":");
+    const source = type === "account" ? accounts : creditCards;
+
+    if (source[sourceName] === undefined || source[sourceName] < amount) {
+      alert("❌ Invalid source or insufficient balance");
+      return;
+    }
+
+    source[sourceName] -= amount;
+
+    transactions.push({ name, merchant, amount, date, sourceType: type, sourceName });
+
+    document.getElementById("transPopup").classList.add("hidden");
+    saveToStorage();
+    updateDisplay();
+  }
+
+  loadFromStorage();
+  updateDisplay();
+</script>
+
+</body>
+</html>

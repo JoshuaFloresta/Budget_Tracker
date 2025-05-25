@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Transaction History</title>
+  <link rel="stylesheet" href="../theme.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+     <nav class="border-b p-6 mb-12 border-black ">
+    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg font-semibold hidden">
+      <li><a href="#" class=" hover:text-[#d08c5f] ">Home</a></li>
+      <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
+      <li><a href="#" class="text-[#5e4a31] hover:text-[#d08c5f] font-bold">Transaction</a></li>
+      <li><a href="#" class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
+    </ul>
+    <div class="absolute right-8 top-6">
+      <!-- Hamburger menu for mobile -->
+      <div class="md:hidden flex items-center -mt-3">
+        <button id="navToggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Profile dropdown (unchanged) -->
+      <div class="relative group hidden md:block mr-16 -m-2 ">
+        <button id="profileBtn" type="button" class="flex items-center focus:outline-none">
+          <img src="../images/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-[#BF9A69]">
+          <svg class="ml-2 w-4 h-4 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="profileDropdown" class="hidden absolute right-2 top-12 w-32 bg-white border rounded shadow z-50">
+               <a href="profile.html" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">Profile</a>
+          <a href="../../index.html" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">Sign out</a>
+          
+        </div>
+      </div>
+
+      <!-- Mobile nav menu -->
+      <div id="mobileNav" class="fixed inset-0 bg-black bg-opacity-40 z-50 hidden md:hidden">
+        <div class="bg-white w-64 h-full shadow-lg p-6 ">
+          <button id="closeNav" class="mb-6 focus:outline-none">
+            <svg class="w-6 h-6 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+          <ul class="space-y-4 text-base font-semibold">
+            <li>
+              <div class="flex gap-2">
+                 <a href="./profile.html">
+                  <img src="../images/avatar.jpg" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-[#BF9A69]">
+                 </a>
+                 <div>
+                  <p" class="text-black font-bold text-xs ">Rigby the Cat</p>
+                  <a href="/index.html" class="text-[#BF9A69] hover:text-[#d08c5f] font-medium text-[10px] -mt-2">Sign-out</a>
+                 </div>
+              </div>
+              
+            </li>
+            <li><a href="#" class="text-[#BF9A69] hover:text-[#d08c5f] font-bold">Home</a></li>
+            <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
+            <li><a href="#" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
+            <li><a href="#" class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
+          </ul>
+        </div>
+      </div>
+    <script>
+      // Hamburger menu logic
+      document.addEventListener('DOMContentLoaded', function () {
+        const navToggle = document.getElementById('navToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeNav = document.getElementById('closeNav');
+        navToggle && navToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileNav.classList.remove('hidden');
+        });
+        closeNav && closeNav.addEventListener('click', function () {
+        mobileNav.classList.add('hidden');
+        });
+        mobileNav && mobileNav.addEventListener('click', function (e) {
+        if (e.target === mobileNav) mobileNav.classList.add('hidden');
+        });
+
+        // Profile dropdown logic
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+        if (profileBtn && profileDropdown) {
+        profileBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          profileDropdown.classList.toggle('hidden');
+        });
+        // Hide dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+          if (!profileDropdown.classList.contains('hidden')) {
+            if (!profileDropdown.contains(e.target) && !profileBtn.contains(e.target)) {
+            profileDropdown.classList.add('hidden');
+            }
+          }
+        });
+        }
+      });
+    </script>
+    </div>
+  </nav>
+
+  <div class=" md:flex justify w-10/12 mx-auto">
+    <!-- Left Panel -->
+    <div class="md:w-[30%] pr-10">
+    <p class="text-xl font-bold mt-14 text-[#5e4a31] mb-3">Filters</p>
+
+    <div class="flex flex-wrap gap-4 mb-4">
+      <select id="typeFilter" class="border px-4 py-2 rounded">
+        <option value="all">All</option>
+        <option value="transaction">Transaction</option>
+        <option value="fund">Fund</option>
+      </select>
+
+    <div>
+    <p class="text-xl font-bold mt-8 text-[#5e4a31] mb-3 gap-2">Range</p>
+     <div class="flex gap-2">
+         <input type="date" id="startDate" class="border px-4 py-2 rounded" />
+      <input type="date" id="endDate" class="border px-4 py-2 rounded" />
+     </div>
+    </div>
+    
+    </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="md:w-[70%] my-12 md:mt-0">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold text-[#5e4a31]">Transaction History 📜</h1>
+    </div>
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow ">
+        <div class="flex justify-between ">
+             <input type="text" id="searchInput" placeholder="Search here" class="border w-[95%] px-4 py-2 rounded mb-4"/>
+              <button id="sortToggle" class="text-gray-600 hover:text-black text-xl -mt-5 ">↓↑</button>
+        </div>
+
+    <div id="historyList" class="space-y-4 max-h-[600px] overflow-y-auto no-scrollbar pr-2"></div>
+  </div>
+     </div>
+    
+  </div>
+
+  
+
+
+  
+
+  <script>
+    
+    const typeFilter = document.getElementById('typeFilter');
+    const sortToggle = document.getElementById('sortToggle');
+    const startDateInput = document.getElementById('startDate');
+    const endDateInput = document.getElementById('endDate');
+    const searchInput = document.getElementById('searchInput');
+    const historyList = document.getElementById('historyList');
+    
+
+    let sortOrder = 'desc'; // Initial sort order
+
+    sortToggle.addEventListener('click', () => {
+      sortOrder = sortOrder === 'desc' ? 'asc' : 'desc';
+      sortToggle.textContent = sortOrder === 'desc' ? '↓↑' : '↑↓';
+      renderHistory();
+    });
+
+    function loadHistoryData() {
+      const transactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+      const fundHistory = JSON.parse(localStorage.getItem('fundHistory') || '[]');
+
+      return [
+        ...fundHistory.map(f => ({ type: 'fund', ...f })),
+        ...transactions.map(t => ({ type: 'transaction', ...t }))
+      ];
+    }
+
+   
+    function renderHistory() {
+  const allData = loadHistoryData();
+  const filterType = typeFilter.value;
+  const startDate = new Date(startDateInput.value);
+  const endDate = new Date(endDateInput.value);
+  endDate.setHours(23, 59, 59, 999);
+  const searchQuery = searchInput.value.toLowerCase();
+
+  let filtered = allData.filter(entry => {
+    const entryDate = new Date(entry.date);
+    const typeMatch = filterType === 'all' || entry.type === filterType;
+    const startMatch = isNaN(startDate) || entryDate >= startDate;
+    const endMatch = isNaN(endDate) || entryDate <= endDate;
+    const searchMatch = entry.name.toLowerCase().includes(searchQuery) ||
+                        (entry.merchant && entry.merchant.toLowerCase().includes(searchQuery));
+    return typeMatch && startMatch && endMatch && searchMatch;
+  });
+
+  filtered.sort((a, b) => sortOrder === 'asc' ? a.amount - b.amount : b.amount - a.amount);
+
+  historyList.innerHTML = '';
+
+  filtered.forEach(entry => {
+    const date = new Date(entry.date).toLocaleDateString();
+
+    if (entry.type === 'transaction') {
+      historyList.innerHTML += `
+        <div class="border px-4 py-2 rounded bg-red-50">
+          <div class="flex justify-between items-center mb-1">
+            <p class="font-semibold">${entry.name}</p>
+            <p class="text-red-700 font-bold">₱${entry.amount.toLocaleString()}</p>
+          </div>
+          <p class="text-sm text-gray-500">Merchant: ${entry.merchant}</p>
+          <p class="text-xs text-gray-400">${date}</p>
+        </div>`;
+    } else {
+      historyList.innerHTML += `
+        <div class="border px-4 py-2 rounded bg-green-50">
+          <div class="flex justify-between items-center mb-1">
+            <p class="font-semibold">${entry.name} (${entry.category})</p>
+            <p class="text-green-700 font-bold">₱${entry.amount.toLocaleString()}</p>
+          </div>
+          <p class="text-xs text-gray-400">${date}</p>
+        </div>`;
+    }
+  });
+
+  if (filtered.length === 0) {
+    historyList.innerHTML = `<p class="text-sm text-gray-500">No results found.</p>`;
+  }
+}
+
+
+    typeFilter.addEventListener('change', renderHistory);
+    searchInput.addEventListener('input', renderHistory);
+    startDateInput.addEventListener('change', renderHistory);
+    endDateInput.addEventListener('change', renderHistory);
+
+    renderHistory();
+  </script>
+</body>
+</html>

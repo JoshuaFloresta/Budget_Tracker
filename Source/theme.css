@@ -1,0 +1,19 @@
+/* Importing the Lexend font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+/* Applying the Lexend font globally */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+    .popup-bg {
+      background-color: rgba(0, 0, 0, 0.5);
+    }

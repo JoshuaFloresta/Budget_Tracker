@@ -1,7 +1,0 @@
-/* Importing the Lexend font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap');
-
-/* Applying the Lexend font globally */
-body {
-    font-family: 'Lexend', sans-serif;
-}
