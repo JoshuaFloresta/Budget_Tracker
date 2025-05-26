@@ -1,11 +1,9 @@
 /* Importing the Lexend font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
 /* Applying the Lexend font globally */
-body {
-    font-family: 'Open Sans', sans-serif;
-}
+   body {
+      font-family: 'Lexend', sans-serif;
+    }
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -16,4 +14,27 @@ body {
   }
     .popup-bg {
       background-color: rgba(0, 0, 0, 0.5);
+    }
+
+ :root {
+      --motif: #d08c5f;
+    }
+    .bg-motif {
+      background-color: var(--motif);
+    }
+    .text-motif {
+      color: var(--motif);
+    }
+    .btn {
+      @apply bg-white text-gray-800 font-semibold text-2xl rounded-xl py-6 flex items-center justify-center shadow hover:shadow-lg transition hover:bg-gray-100 active:scale-95;
+    }
+    .btn-op {
+      @apply text-motif border border-motif;
+    }
+    .btn-equal {
+      @apply bg-motif text-white hover:brightness-110;
+    }
+    .sticky-note {
+      background-color: #fef3dc;
+      box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.1);
     }

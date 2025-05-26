@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> ClipCents</title>
+    <link rel="stylesheet" href="../theme.css">
+      <link rel="icon" href="../images/icon.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+ 
+</head>
+
+<body >
+    <nav class="border-b p-6 mb-12 border-black ">
+    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg  hidden">
+      <li><a href="home.html" class=" hover:text-[#d08c5f]">Home</a></li>
+      <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
+      <li><a href="Transaction.html" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
+      <li><a href="calculator.html" class=" hover:text-[#d08c5f] text-[#3b2e1d] font-semibold">Calculator</a></li>
+    </ul>
+    <div class="absolute right-8 top-6">
+      <!-- Hamburger menu for mobile -->
+      <div class="md:hidden flex items-center -mt-3">
+        <button id="navToggle" class="focus:outline-none">
+          <svg class="w-8 h-8 text-[#d08c5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Profile dropdown (unchanged) -->
+      <div class="relative group hidden md:block mr-16 -m-2 ">
+        <button id="profileBtn" type="button" class="flex items-center focus:outline-none">
+          <img src="../images/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-[#d08c5f]">
+          <svg class="ml-2 w-4 h-4 text-[#d08c5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="profileDropdown" class="hidden absolute right-2 top-12 w-32 bg-white border rounded shadow z-50">
+          <a href="profile.html" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">Profile</a>
+          <a href="../../index.html" class="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">Sign out</a>
+          
+        </div>
+      </div>
+
+      <!-- Mobile nav menu -->
+      <div id="mobileNav" class="fixed inset-0 bg-black bg-opacity-40 z-50 hidden md:hidden">
+        <div class="bg-white w-64 h-full shadow-lg p-6 ">
+          <button id="closeNav" class="mb-6 focus:outline-none">
+            <svg class="w-6 h-6 text-[#d08c5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+          <ul class="space-y-4 text-base  ">
+            <li>
+              <div class="flex gap-2">
+                 <a href="./profile.html">
+                  <img src="../images/avatar.jpg" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-[#d08c5f]">
+                 </a>
+                 <div>
+                  <p" class="text-black font-bold text-xs ">Rigby the Cat</p>
+                  <a href="/index.html" class="text-[#d08c5f] hover:text-[#d08c5f] font-medium text-[10px] -mt-2">Sign-out</a>
+                 </div>
+              </div>
+              
+            </li>
+            <li><a href="#" class="text-[#d08c5f] hover:text-[#d08c5f]">Home</a></li>
+            <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
+            <li><a href="Transaction.html" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
+            <li><a href="calculator.html" class="text-[#3b2e1d] hover:text-[#d08c5f] font-semibold">Calculator</a></li>
+          </ul>
+        </div>
+      </div>
+      <script>
+        // Hamburger menu logic
+        document.addEventListener('DOMContentLoaded', function () {
+          const navToggle = document.getElementById('navToggle');
+          const mobileNav = document.getElementById('mobileNav');
+          const closeNav = document.getElementById('closeNav');
+          navToggle && navToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            mobileNav.classList.remove('hidden');
+          });
+          closeNav && closeNav.addEventListener('click', function () {
+            mobileNav.classList.add('hidden');
+          });
+          mobileNav && mobileNav.addEventListener('click', function (e) {
+            if (e.target === mobileNav) mobileNav.classList.add('hidden');
+          });
+        });
+      </script>
+    </div>
+  </nav>
+ <div class=" flex items-center justify-center px-4 py-10">
+  <div class="w-full max-w-md bg-white shadow-2xl rounded-3xl overflow-hidden border border-[#e2d6ce]">
+    
+    <!-- Header -->
+    <div class="bg-motif text-white text-center py-6 text-3xl font-bold tracking-wider">
+      Calculator
+    </div>
+
+    <!-- Display -->
+    <div id="display" class="bg-gray-50 text-right text-4xl px-6 py-8 font-mono text-gray-900 border-b border-gray-200 min-h-[90px]">
+      0
+    </div>
+
+    <!-- Buttons -->
+    <div class="grid grid-cols-4 gap-3 p-6 bg-white">
+      <button class="btn btn-op" data-value="C">C</button>
+      <button class="btn btn-op" data-value="/">÷</button>
+      <button class="btn btn-op" data-value="*">×</button>
+      <button class="btn btn-op" data-value="←">⌫</button>
+
+      <button class="btn" data-value="7">7</button>
+      <button class="btn" data-value="8">8</button>
+      <button class="btn" data-value="9">9</button>
+      <button class="btn btn-op" data-value="-">−</button>
+
+      <button class="btn" data-value="4">4</button>
+      <button class="btn" data-value="5">5</button>
+      <button class="btn" data-value="6">6</button>
+      <button class="btn btn-op" data-value="+">+</button>
+
+      <button class="btn" data-value="1">1</button>
+      <button class="btn" data-value="2">2</button>
+      <button class="btn" data-value="3">3</button>
+      <button class="btn-equal btn row-span-2" data-value="=">=</button>
+
+      <button class="btn col-span-2" data-value="0">0</button>
+      <button class="btn" data-value=".">.</button>
+    </div>
+  </div>
+</div>
+
+  <script>
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('.btn, .btn-equal');
+    let expression = '';
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const val = button.dataset.value;
+
+        if (val === 'C') {
+          expression = '';
+          display.textContent = '0';
+        } else if (val === '←') {
+          expression = expression.slice(0, -1);
+          display.textContent = expression || '0';
+        } else if (val === '=') {
+          try {
+            expression = eval(expression).toString();
+            display.textContent = expression;
+          } catch {
+            display.textContent = 'Error';
+            expression = '';
+          }
+        } else {
+          expression += val;
+          display.textContent = expression;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

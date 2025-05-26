@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Transaction History</title>
+  <title>ClipCents</title>
   <link rel="stylesheet" href="../theme.css">
+  <link rel="icon" href="../images/icon.png" type="image/png" />
 <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 <body>
      <nav class="border-b p-6 mb-12 border-black ">
-    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg font-semibold hidden">
-      <li><a href="#" class=" hover:text-[#d08c5f] ">Home</a></li>
+    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg hidden">
+      <li><a href="home.html" class=" hover:text-[#d08c5f] ">Home</a></li>
       <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
-      <li><a href="#" class="text-[#5e4a31] hover:text-[#d08c5f] font-bold">Transaction</a></li>
-      <li><a href="#" class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
+      <li><a href="Transaction.html" class="text-[#3b2e1d] hover:text-[#d08c5f] font-semibold">Transaction</a></li>
+      <li><a href="calculator.html" class="text-black hover:text-[#d08c5f]">Calculator</a></li>
     </ul>
     <div class="absolute right-8 top-6">
       <!-- Hamburger menu for mobile -->
@@ -48,7 +49,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
-          <ul class="space-y-4 text-base font-semibold">
+          <ul class="space-y-4 text-base  ">
             <li>
               <div class="flex gap-2">
                  <a href="./profile.html">
@@ -61,10 +62,10 @@
               </div>
               
             </li>
-            <li><a href="#" class="text-[#BF9A69] hover:text-[#d08c5f] font-bold">Home</a></li>
+            <li><a href="home.html" class=" hover:text-[#d08c5f] font-bold">Home</a></li>
             <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
-            <li><a href="#" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
-            <li><a href="#" class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
+            <li><a href="Transaction.html" class="text-[#3b2e1d] hover:text-[#d08c5f] font-semibold">Transaction</a></li>
+            <li><a href="calculator.html" class="text-black hover:text-[#d08c5f]">Calculator</a></li>
           </ul>
         </div>
       </div>
@@ -110,7 +111,7 @@
   <div class=" md:flex justify w-10/12 mx-auto">
     <!-- Left Panel -->
     <div class="md:w-[30%] pr-10">
-    <p class="text-xl font-bold mt-14 text-[#5e4a31] mb-3">Filters</p>
+    <p class="text-xl font-bold mt-14 text-[#3b2e1d] mb-3">Filters</p>
 
     <div class="flex flex-wrap gap-4 mb-4">
       <select id="typeFilter" class="border px-4 py-2 rounded">
@@ -120,20 +121,19 @@
       </select>
 
     <div>
-    <p class="text-xl font-bold mt-8 text-[#5e4a31] mb-3 gap-2">Range</p>
+    <p class="text-xl font-bold mt-8 text-[#3b2e1d] mb-3 gap-2">Range</p>
      <div class="flex gap-2">
          <input type="date" id="startDate" class="border px-4 py-2 rounded" />
       <input type="date" id="endDate" class="border px-4 py-2 rounded" />
      </div>
     </div>
-    
     </div>
     </div>
 
     <!-- Right Panel -->
     <div class="md:w-[70%] my-12 md:mt-0">
     <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-bold text-[#5e4a31]">Transaction History 📜</h1>
+      <h1 class="text-2xl font-bold text-[#3b2e1d]">Transaction History 📜</h1>
     </div>
     <div class="max-w-4xl mx-auto bg-white p-6 rounded shadow ">
         <div class="flex justify-between ">

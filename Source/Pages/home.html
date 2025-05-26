@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> ClipCents </title>
   <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../images/icon.png" type="image/png" />
+
   <link rel="stylesheet" href="../theme.css">
   
 </head>
 <body>
   <nav class="border-b p-6 mb-12 border-black ">
-    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg font-semibold hidden">
-      <li><a href="#" class="text-[#5e4a31] hover:text-[#d08c5f] font-bold">Home</a></li>
+    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg  hidden">
+      <li><a href="#" class="text-[#3b2e1d] hover:text-[#d08c5f] font-semibold">Home</a></li>
       <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
       <li><a href="Transaction.html" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
       <li><a href="future-expense." class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
@@ -20,7 +22,7 @@
       <!-- Hamburger menu for mobile -->
       <div class="md:hidden flex items-center -mt-3">
         <button id="navToggle" class="focus:outline-none">
-          <svg class="w-8 h-8 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-8 h-8 text-[#d08c5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
@@ -28,8 +30,8 @@
       <!-- Profile dropdown (unchanged) -->
       <div class="relative group hidden md:block mr-16 -m-2 ">
         <button id="profileBtn" type="button" class="flex items-center focus:outline-none">
-          <img src="../images/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-[#BF9A69]">
-          <svg class="ml-2 w-4 h-4 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <img src="../images/avatar.jpg" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-[#d08c5f]">
+          <svg class="ml-2 w-4 h-4 text-[#d08c5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
         </button>
@@ -44,27 +46,27 @@
       <div id="mobileNav" class="fixed inset-0 bg-black bg-opacity-40 z-50 hidden md:hidden">
         <div class="bg-white w-64 h-full shadow-lg p-6 ">
           <button id="closeNav" class="mb-6 focus:outline-none">
-            <svg class="w-6 h-6 text-[#BF9A69]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-6 h-6 text-[#d08c5f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
-          <ul class="space-y-4 text-base font-semibold">
+          <ul class="space-y-4 text-base  ">
             <li>
               <div class="flex gap-2">
                  <a href="./profile.html">
-                  <img src="../images/avatar.jpg" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-[#BF9A69]">
+                  <img src="../images/avatar.jpg" alt="Avatar" class="w-14 h-14 rounded-full border-2 border-[#d08c5f]">
                  </a>
                  <div>
                   <p" class="text-black font-bold text-xs ">Rigby the Cat</p>
-                  <a href="/index.html" class="text-[#BF9A69] hover:text-[#d08c5f] font-medium text-[10px] -mt-2">Sign-out</a>
+                  <a href="/index.html" class="text-[#d08c5f] hover:text-[#d08c5f] font-medium text-[10px] -mt-2">Sign-out</a>
                  </div>
               </div>
               
             </li>
-            <li><a href="#" class="text-[#BF9A69] hover:text-[#d08c5f] font-bold">Home</a></li>
+            <li><a href="home.html" class="text-[#3b2e1d] hover:text-[#d08c5f] font-bold">Home</a></li>
             <li><a href="Article.html" class="text-black hover:text-[#d08c5f]">Article</a></li>
-            <li><a href="#" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
-            <li><a href="#" class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
+            <li><a href="Transaction.html" class="text-black hover:text-[#d08c5f]">Transaction</a></li>
+            <li><a href="calculator.html" class="text-black hover:text-[#d08c5f]">Calculator</a></li>
           </ul>
         </div>
       </div>
@@ -93,20 +95,20 @@
     <!-- Left Panel -->
     <div class="md:w-1/2 pr-10">
       <div class="flex justify-between items-center mb-2">
-      <p class="bg-[#BF9A69] text-white px-4 py-2 rounded-xl mb-2 text-sm font-semibold">ASSETS</p>
+      <p class="bg-[#d08c5f] text-white px-4 py-2 rounded-lg mb-2 text-sm font-semibold">ASSETS</p>
       </div>
       <h1 class="text-5xl font-bold">₱<span id="totalAssets">0.00</span></h1>
       <p class="text-sm text-gray-500 mb-4">Spend your funds wisely!</p>
 
       <div class="">
         <div class="flex justify-between items-center mb-2">
-        <p class="bg-[#BF9A69] text-white text-sm font-semibold px-4 py-2 rounded mb-1 flex">Accounts</p>
+        <p class="bg-[#d08c5f] text-white text-sm font-semibold px-4 py-2 rounded-lg mb-1 flex">Accounts</p>
         </div>
         <ul id="accountList" class="mb-4 space-y-1 "></ul>
       </div>
       <div>
         <div class="flex justify-between items-center mb-2">
-        <p class="bg-[#BF9A69] text-white text-sm font-semibold px-4 py-2 rounded mb-1">Credit Cards</p>
+        <p class="bg-[#d08c5f] text-white text-sm font-semibold px-4 py-2 rounded-lg mb-1">Credit Cards</p>
         </div>
         <ul id="creditList" class="space-y-1"></ul>
       </div>
@@ -115,7 +117,7 @@
     <!-- Right Panel -->
     <div class="md:w-1/2 my-12 md:mt-0">
       <div class="flex justify-between items-center mb-3">
-      <p class="bg-[#BF9A69] text-white px-4 py-1 rounded-xl mb-4  text-base font-semibold">Transactions</p>
+      <p class="bg-[#d08c5f] text-white px-4 py-1 mb-4  text-base font-semibold rounded-lg">Transactions</p>
       <div class="relative">
         <button onclick="showNewOptions()" class="border px-3 py-2 rounded-full text-sm -mt-3">New +</button>
         <div id="newOptions" class="hidden absolute right-0  bg-white border rounded shadow p-2">

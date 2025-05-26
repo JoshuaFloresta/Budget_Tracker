@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Finance Articles</title>
+  <title>ClipCents</title>
+    <link rel="icon" href="../images/icon.png" type="image/png" />
   <link rel="stylesheet" href="/Source/theme.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
  <nav class="border-b p-6 mb-12 border-black ">
-    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg font-semibold hidden">
+    <ul class="md:flex md:space-x-10 w-10/12 space-x-2 mx-auto text-xs md:text-md lg:text-lg  hidden">
       <li><a href="home.html" class=" hover:text-[#d08c5f] ">Home</a></li>
-      <li><a href="Article.html" class="text-[#5e4a31] hover:text-[#d08c5f] font-bold">Article</a></li>
+      <li><a href="Article.html" class="text-[#3b2e1d] hover:text-[#d08c5f] font-bold">Article</a></li>
       <li><a href="Transaction.html" class=" hover:text-[#d08c5f] ">Transaction</a></li>
       <li><a href="future-expense.html" class="text-black hover:text-[#d08c5f]">Future Expenses</a></li>
     </ul>
@@ -46,7 +47,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
           </button>
-          <ul class="space-y-4 text-base font-semibold">
+          <ul class="space-y-4 text-base ">
             <li>
               <div class="flex gap-2">
                  <a href="./profile.html">
@@ -107,9 +108,9 @@
 
   <div class="container mx-auto px-4 w-[90%]">
     <div class="flex items-center mb-8">
-      <hr class="flex-grow border-t-2 border-[#6b5639] mr-4">
-      <h1 class="text-3xl font-bold text-center text-[#6b5639] whitespace-nowrap">Latest Finance News</h1>
-      <hr class="flex-grow border-t-2 border-[#6b5639] ml-4">
+      <hr class="flex-grow border-t-2 border-[#3b2e1d] mr-4">
+      <h1 class="text-3xl font-bold text-center text-[#3b2e1d] whitespace-nowrap">Latest Finance News</h1>
+      <hr class="flex-grow border-t-2 border-[#3b2e1d] ml-4">
     </div>
     <div id="news-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
   </div>
@@ -148,7 +149,7 @@
     topContent.className = 'mb-4 ';
 
     const title = document.createElement('h2');
-    title.className = 'text-lg font-semibold mb-2 scrollbar-hidden text-[#6b5639]';
+    title.className = 'text-lg font-semibold mb-2 scrollbar-hidden text-[#3b2e1d]';
     title.textContent = article.title;
 
     const description = document.createElement('div');
