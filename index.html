@@ -1,63 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Budget Tracker</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClipCents  Tracker - Login</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Source/theme.css">
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+    }
+  </style>
 </head>
-<body>
-    <div class="flex h-screen bg-[#d08c5f] md:bg-white">
-        <!-- Left Section -->
-        <div class="w-1/2 bg-[#d08c5f] text-white md:flex flex-col justify-center items-center hidden">
-            <h1 class="text-4xl font-bold mb-4">Welcome to Budget Tracker</h1>
-            <p class="text-lg">Track your expenses and manage your finances effortlessly.</p>
-            <img src="/Source/images/image 1.png" alt="vector" class="mt-8 w-3/5 h-auto">
-        </div>
+<body class="bg-[#fefefe] text-gray-800">
+  <div class="flex min-h-screen">
+    
+    <!-- Left Section -->
+    <div class="hidden md:flex w-1/2 flex-col items-center justify-center bg-[#d08c5f] text-white px-10">
+      <h1 class="text-4xl font-bold mb-4 text-center">Welcome to ClipCents </h1>
+      <p class="text-lg text-center max-w-md">Track your expenses and manage your finances effortlessly.</p>
+      <img src="/Source/images/image 1.png" alt="vector" class="mt-8 w-3/4 h-auto" />
+    </div>
 
-        <!-- Right Section -->
-        <div class="w-1/2 md:bg-white flex items-center justify-center mx-auto bg-[#d08c5f] ">
-            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-90">
-              <h2 class="text-2xl font-bold mb-2 text-center">Log In</h2>
-              <p class="text-md text-gray-600 mb-6 text-center">Welcome back!</p>
-              <form id="loginForm" action="Home.html">
-                <div class="mb-4">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                    Username
-                  </label>
-                  <input 
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="username" 
-                    type="text" 
-                    placeholder="Enter your username" 
-                    required
-                  >
-                </div>
-                <div class="mb-6">
-                  <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-                    Password
-                  </label>
-                  <input 
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                    id="password" 
-                    type="password" 
-                    placeholder="Enter your password" 
-                    required
-                  >
-                </div>
-                <div class="flex items-center justify-between">
-                  <a href="Source/Pages/home.html"
-                    class="bg-[#d08c5f] text-white font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline"  
-                  >
-                    Log In
-                </a>
-                </div>
-              </form>
+    <!-- Right Section -->
+    <div class="flex flex-col justify-center items-center w-full md:w-1/2 px-8 py-12 bg-white">
+      <div class="w-full max-w-md space-y-6">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold">Log In</h2>
+          <p class="text-sm text-gray-600 mt-1">Welcome back! Please enter your details.</p>
+        </div>
+        <form id="loginForm" action="Home.html" class="space-y-5">
+          <div>
+            <label for="username" class="block text-sm font-medium mb-1">Username:</label>
+            <input id="username" type="text" placeholder="Enter your username" required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#d08c5f] focus:outline-none" />
+          </div>
+          <div>
+
+           <div>
+            <label for="password" class="block text-sm font-medium mb-1">Password:</label>
+            <div class="relative">
+              <input id="password" type="password" placeholder="Create a password" required
+                class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-[#d08c5f] focus:outline-none pr-10" />
+              <button type="button" id="togglePassword" tabindex="-1"
+                class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 focus:outline-none"
+                aria-label="Toggle password visibility">
+                <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.956 9.956 0 012.293-3.95m3.362-2.675A9.956 9.956 0 0112 5c4.477 0 8.268 2.943 9.542 7a9.973 9.973 0 01-4.293 5.03M15 12a3 3 0 11-6 0 3 3 0 016 0zm-6.364 6.364L19.07 4.93" />
+                </svg>
+              </button>
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                const passwordInput = document.getElementById('password');
+                const toggleBtn = document.getElementById('togglePassword');
+                const eyeOpen = document.getElementById('eyeOpen');
+                const eyeClosed = document.getElementById('eyeClosed');
+                toggleBtn.addEventListener('click', function () {
+                  const isPassword = passwordInput.type === 'password';
+                  passwordInput.type = isPassword ? 'text' : 'password';
+                  eyeOpen.classList.toggle('hidden', !isPassword);
+                  eyeClosed.classList.toggle('hidden', isPassword);
+                });
+              });
+            </script>
+          </div>
+            <div class="text-right mt-2">
+              <a href="#" class="text-sm text-[#d08c5f] hover:underline font-semibold">Forgot Password?</a>
             </div>
           </div>
-          
-
+          <div>
+             <button class="w-full bg-[#d08c5f] text-white font-semibold py-2 rounded-md hover:bg-[#c47d51] transition duration-200">Log in </button>          
+            </div>
+          <div class="text-center text-sm mt-4">
+            New user? <a href="./Source/Pages/Sign-up.html" class="text-[#d08c5f] font-medium hover:underline">Register here</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
